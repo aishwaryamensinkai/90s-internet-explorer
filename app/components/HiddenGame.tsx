@@ -86,6 +86,7 @@ export function HiddenGame() {
         style={{ left: `${position.x}px`, top: `${position.y}px` }}
         onClick={handleClick}
       />
+      
     </div>
   );
 }

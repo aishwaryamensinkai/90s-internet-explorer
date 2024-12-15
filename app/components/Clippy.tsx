@@ -9,6 +9,11 @@ const CLIPPY_MESSAGES = [
   "Having trouble finding what you're looking for? Try using the search bar!",
   "Remember to check your email! You've got mail!",
   "Why not try customizing your desktop? Right-click for options!",
+  "Try double-clicking on a link to open it in a new tab!",
+  "Need help with your homework? Try searching the web for answers!",
+  "It looks like you're writing a letter. Would you like help with that?",
+  "Need to print something? Make sure your printer is connected!",
+  "Having trouble with your internet connection? Try restarting your computer!",
 ];
 
 export function Clippy() {

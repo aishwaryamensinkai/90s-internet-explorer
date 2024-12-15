@@ -213,6 +213,8 @@ export default function Home() {
         </div>
 
         <StatusBar />
+        
+        {/* Clippy and HiddenGame */}
         <Clippy />
         <HiddenGame />
       </div>
