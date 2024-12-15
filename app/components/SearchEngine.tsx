@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import Image from "next/image";
 import { PixelBorder } from "./PixelBorder";
@@ -13,7 +14,6 @@ interface Item {
 
 function RenderItem({ item }: { item: Item }) {
   if (item.Topics) {
-    // If the item has nested topics, render them recursively
     return (
       <div>
         <h3>{item.Name}</h3>
@@ -27,7 +27,12 @@ function RenderItem({ item }: { item: Item }) {
   }
   return (
     <li>
-      <a href={item.FirstURL} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+      <a
+        href={item.FirstURL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-blue-600 hover:underline"
+      >
         {item.Text}
       </a>
     </li>
@@ -36,20 +41,30 @@ function RenderItem({ item }: { item: Item }) {
 
 export function SearchEngine() {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<Item[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSearch = async (e: { preventDefault: () => void; }) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(null);
 
     const searchSound = new Audio("/dialup.mp3");
-    searchSound.play().catch(err => console.error("Sound playback failed:", err));
+    searchSound
+      .play()
+      .catch((err) => console.error("Sound playback failed:", err));
 
     try {
-      const response = await fetch(`https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&pretty=1`);
+      const response = await fetch(
+        `/api/search?q=${encodeURIComponent(query)}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
-      setResults(data.RelatedTopics); // Store all topics directly
+      setResults(data.RelatedTopics || []);
     } catch (error) {
       console.error("Search failed:", error);
+      setError("Search failed. Please try again later.");
       setResults([]);
     }
   };
@@ -78,6 +93,7 @@ export function SearchEngine() {
             Search
           </button>
         </form>
+        {error && <p className="text-red-500 mt-2">{error}</p>}
         <div>
           {results.length > 0 && (
             <ul className="list-disc pl-5 mt-4">
