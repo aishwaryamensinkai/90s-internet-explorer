@@ -21,6 +21,8 @@ import { BannerAd } from "./components/BannerAd";
 import { SearchEngine } from "./components/SearchEngine";
 import { StockTicker } from "./components/StockTicker";
 import { UpcomingEvents } from "./components/UpcomingEvents";
+import { Clippy } from "./components/Clippy";
+import { HiddenGame } from "./components/HiddenGame";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -211,6 +213,8 @@ export default function Home() {
         </div>
 
         <StatusBar />
+        <Clippy />
+        <HiddenGame />
       </div>
       {showSecurityWarning && (
         <SecurityWarning onClose={() => setShowSecurityWarning(false)} />
