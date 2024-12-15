@@ -217,9 +217,6 @@ export default function Home() {
             text="This site is under construction. Please check back soon!"
             className="text-2xl mt-2"
           />
-          <p className="text-2xl blink mt-2">
-            This site is under construction. Please check back soon!
-          </p>
         </div>
 
         <StatusBar />
