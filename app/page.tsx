@@ -26,6 +26,10 @@ import { HiddenGame } from "./components/HiddenGame";
 import { FavoritesManager } from "./components/FavoritesManager";
 import { WelcomePopup } from "./components/WelcomePopup";
 import { BlinkingText } from "./components/BlinkingText";
+import { SiteOfTheDay } from "./components/SiteOfTheDay";
+import { ChatRoom } from "./components/ChatRoom";
+import { EmailNotification } from "./components/EmailNotification";
+import { WebDirectory } from "./components/WebDirectory";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,6 +50,7 @@ export default function Home() {
         {/* <SoundEffect /> */}
         <DialUpAnimation />
         <WelcomePopup />
+        <EmailNotification />
 
         <NavigationBar />
         <AddressBar />
@@ -124,6 +129,11 @@ export default function Home() {
           </div>
         </PixelBorder>
 
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <SiteOfTheDay />
+          <ChatRoom />
+        </div>
+
         {/* Web Buttons */}
         <div className="flex justify-center space-x-4 my-6">
           <Image
@@ -190,6 +200,7 @@ export default function Home() {
               </li>
             </ul>
           </div>
+          <WebDirectory />
         </PixelBorder>
 
         {/* News Section */}
