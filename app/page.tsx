@@ -23,6 +23,7 @@ import { StockTicker } from "./components/StockTicker";
 import { UpcomingEvents } from "./components/UpcomingEvents";
 import { Clippy } from "./components/Clippy";
 import { HiddenGame } from "./components/HiddenGame";
+import { FavoritesManager } from "./components/FavoritesManager";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -59,6 +60,8 @@ export default function Home() {
           </div>
         </PixelBorder>
 
+        {/* Main Content */}
+        <FavoritesManager />
         <SearchEngine />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -213,7 +216,7 @@ export default function Home() {
         </div>
 
         <StatusBar />
-        
+
         {/* Clippy and HiddenGame */}
         <Clippy />
         <HiddenGame />
