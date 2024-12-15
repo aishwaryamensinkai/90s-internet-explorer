@@ -1,0 +1,363 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #000080;
+  --secondary-color: #008080;
+  --accent-color: #ff00ff;
+}
+
+body {
+  font-family: "VT323", monospace;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+/* Classic Windows 98 button styles */
+.win98-btn {
+  font-family: "Arial", sans-serif;
+  font-size: 11px;
+  color: black;
+  background-color: #c0c0c0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  padding: 4px 8px;
+  box-shadow: inset -1px -1px 0 0 #0a0a0a, inset 1px 1px 0 0 #ffffff,
+    inset -2px -2px 0 0 #808080, inset 2px 2px 0 0 #dfdfdf;
+}
+
+.win98-btn:active {
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+  box-shadow: inset 1px 1px 0 0 #0a0a0a, inset -1px -1px 0 0 #ffffff,
+    inset 2px 2px 0 0 #808080, inset -2px -2px 0 0 #dfdfdf;
+}
+
+/* Blinking text effect */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.blink {
+  animation: blink 1s step-start 0s infinite;
+}
+
+/* Links */
+a {
+  color: #0000ff;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #800080;
+}
+
+/* Table styles */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  border: 2px solid #808080;
+}
+
+/* Classic scrollbar */
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #dfdfdf;
+  border: 1px solid #808080;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 1px solid #808080;
+}
+
+/* Windows 98 window styles */
+.win98-window {
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+  background: #c0c0c0;
+  padding: 2px;
+}
+
+/* Loading animation */
+@keyframes load {
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-load {
+  animation: load 3s linear infinite;
+}
+
+/* Pixelated border */
+.pixel-border {
+  /* border-image-source: url("/pixel-border.png"); */
+  border-image-slice: 4;
+  border-image-repeat: stretch;
+  border-width: 4px;
+  border-style: solid;
+}
+
+/* Starry background */
+.starry-bg {
+  background-color: #000080;
+  background-image: radial-gradient(
+      white,
+      rgba(255, 255, 255, 0.2) 2px,
+      transparent 40px
+    ),
+    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 40px),
+    radial-gradient(
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0.1) 2px,
+      transparent 30px
+    );
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Old-school text shadow */
+.text-shadow-retro {
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #fff;
+}
+
+/* CRT screen effect */
+.crt::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.06),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.06)
+    );
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+/* Dial-up animation */
+@keyframes dialup {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.animate-dialup {
+  background-image: linear-gradient(
+      45deg,
+      #000 25%,
+      transparent 25%,
+      transparent 75%,
+      #000 75%,
+      #000
+    ),
+    linear-gradient(
+      45deg,
+      #000 25%,
+      transparent 25%,
+      transparent 75%,
+      #000 75%,
+      #000
+    );
+  background-size: 10px 10px;
+  animation: dialup 1s linear infinite;
+}
+
+/* New styles for added components */
+.win98-input {
+  border: 2px inset #dfdfdf;
+  background-color: white;
+  padding: 2px 4px;
+}
+
+.win98-menu {
+  background-color: #c0c0c0;
+  border: 2px outset #dfdfdf;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.win98-menu-item {
+  padding: 2px 20px 2px 4px;
+}
+
+.win98-menu-item:hover {
+  background-color: #000080;
+  color: white;
+}
+
+/* Status bar styles */
+.status-bar {
+  border-top: 1px solid #808080;
+  border-bottom: 1px solid #ffffff;
+  background-color: #c0c0c0;
+  padding: 2px 4px;
+  font-size: 11px;
+  font-family: "Arial", sans-serif;
+}
+
+/* Security warning styles */
+.security-warning {
+  background-color: #ffffe1;
+  border: 1px solid #000000;
+  padding: 10px;
+  font-family: "Arial", sans-serif;
+  font-size: 12px;
+}
+
+.security-warning-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.security-warning-buttons {
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* 404 Not Found page styles */
+.not-found {
+  text-align: center;
+  padding: 20px;
+  font-family: "Arial", sans-serif;
+}
+
+.not-found h1 {
+  font-size: 48px;
+  color: #ff0000;
+  margin-bottom: 20px;
+}
+
+.not-found p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* About page styles */
+.about-page {
+  font-family: "Arial", sans-serif;
+  padding: 20px;
+}
+
+.about-page h1 {
+  font-size: 24px;
+  color: #000080;
+  margin-bottom: 20px;
+}
+
+.about-page table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.about-page th,
+.about-page td {
+  border: 1px solid #808080;
+  padding: 5px;
+}
+
+.about-page th {
+  background-color: #c0c0c0;
+  font-weight: bold;
+}
+
+/* Contact page styles */
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.contact-form button {
+  background-color: #000080;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #0000a0;
+}
+
+/* Stock Ticker styles */
+.stock-ticker {
+  font-family: "Courier New", Courier, monospace;
+}
+
+.stock-ticker th {
+  background-color: #000080;
+  color: white;
+}
+
+/* Search Engine styles */
+.search-engine input {
+  font-family: "Arial", sans-serif;
+  font-size: 14px;
+}
+
+/* Upcoming Events styles */
+.upcoming-events li:nth-child(even) {
+  background-color: #e6ffe6;
+}
