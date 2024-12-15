@@ -24,6 +24,8 @@ import { UpcomingEvents } from "./components/UpcomingEvents";
 import { Clippy } from "./components/Clippy";
 import { HiddenGame } from "./components/HiddenGame";
 import { FavoritesManager } from "./components/FavoritesManager";
+import { WelcomePopup } from "./components/WelcomePopup";
+import { BlinkingText } from "./components/BlinkingText";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -43,6 +45,7 @@ export default function Home() {
       <div className="space-y-4 p-4">
         {/* <SoundEffect /> */}
         <DialUpAnimation />
+        <WelcomePopup />
 
         <NavigationBar />
         <AddressBar />
@@ -209,6 +212,10 @@ export default function Home() {
             width={1000}
             height={100}
             className="mx-auto"
+          />
+          <BlinkingText
+            text="This site is under construction. Please check back soon!"
+            className="text-2xl mt-2"
           />
           <p className="text-2xl blink mt-2">
             This site is under construction. Please check back soon!
