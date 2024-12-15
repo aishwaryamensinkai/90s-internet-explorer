@@ -169,6 +169,8 @@ npm run dev
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+5. Create a .env.local file and add the API key in it NEXT_PUBLIC_WEATHER_API_KEY have used [openweather](https://api.openweathermap.org) for Real time weather details.
+
 ## 🎯 Key Components
 
 - `AddressBar`: Simulates the classic IE address bar with URL input
