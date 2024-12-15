@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
@@ -18,6 +19,14 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen bg-[#008080]">
         <div className="container mx-auto min-h-screen flex flex-col bg-gray-200 shadow-lg">
+          <div className="bg-gray-300 p-2">
+            <Image
+              src="/ie-logo.png"
+              alt="Internet Explorer Logo"
+              width={40}
+              height={40}
+            />
+          </div>
           <Header />
           <div className="flex flex-1">
             <Sidebar />
