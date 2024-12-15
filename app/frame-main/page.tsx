@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { DownloadButton } from "../components/DownloadButton";
 import { WebCounter } from "../components/WebCounter";
@@ -51,7 +53,7 @@ export default function FrameMain() {
         </tbody>
       </table>
       <div className="bg-yellow-200 border border-yellow-400 p-2 mb-4">
-        <div className="text-red-600 font-bold marquee">
+        <div className="text-red-600 font-bold marquee1">
           New! Download Internet Explorer 4.0 now for the best web experience!
           Compatible with Windows 95, 98, and NT!
         </div>
@@ -63,22 +65,6 @@ export default function FrameMain() {
       />
       <WebCounter />
       <Guestbook />
-      <style jsx>{`
-        .marquee {
-          overflow: hidden;
-          white-space: nowrap;
-          box-sizing: border-box;
-          animation: marquee 10s linear infinite;
-        }
-        @keyframes marquee {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(-100%);
-          }
-        }
-      `}</style>
     </div>
   );
 }

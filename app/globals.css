@@ -361,3 +361,20 @@ th {
 .upcoming-events li:nth-child(even) {
   background-color: #e6ffe6;
 }
+
+.marquee1 {
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee1 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
