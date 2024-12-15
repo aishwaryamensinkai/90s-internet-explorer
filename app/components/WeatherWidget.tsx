@@ -14,25 +14,41 @@ export function WeatherWidget() {
     "Bangalore",
   ];
   const [selectedCity, setSelectedCity] = useState(cities[0]);
-  const [weather, setWeather] = useState({
-    temperature: "",
-    description: "",
-  });
+  const [weather, setWeather] = useState({ temperature: "", description: "", humidity: "", wind: "" });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${apiKey}&units=metric`; // Changed to metric for Celsius
+    if (!apiKey) {
+      setError("Weather API key is not configured.");
+      return;
+    }
 
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${apiKey}&units=metric`;
     async function fetchWeather() {
+      setLoading(true);
       try {
         const response = await fetch(url);
         const data = await response.json();
+        if (data.cod !== 200) {
+          throw new Error(data.message);
+        }
         setWeather({
-          temperature: `${Math.round(data.main.temp)}°C`, // Displaying temperature in Celsius
+          temperature: `${Math.round(data.main.temp)}°C`,
           description: data.weather[0].description,
+          humidity: data.main.humidity + "%",
+          wind: data.wind.speed + " m/s",
         });
+        setError(null);
       } catch (error) {
-        console.error("Failed to fetch weather data:", error);
+        if (error instanceof Error) {
+          setError("Failed to fetch weather data: " + error.message);
+        } else {
+          setError("Failed to fetch weather data.");
+        }
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -56,23 +72,31 @@ export function WeatherWidget() {
             </button>
           ))}
         </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="font-bold">{selectedCity}</p>
-            <p>{weather.temperature}</p>
-            <p>
-              {weather.description.charAt(0).toUpperCase() +
-                weather.description.slice(1)}
-            </p>
+        {loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div className="text-red-500">{error}</div>
+        ) : (
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="font-bold">{selectedCity}</p>
+              <p>{weather.temperature}</p>
+              <p>
+                {weather.description.charAt(0).toUpperCase() +
+                  weather.description.slice(1)}
+              </p>
+              <p>Humidity: {weather.humidity}</p>
+              <p>Wind: {weather.wind}</p>
+            </div>
+            <Image
+              src="/weather-icon.gif"
+              alt="Weather"
+              width={64}
+              height={64}
+              priority
+            />
           </div>
-          <Image
-            src="/weather-icon.gif"
-            alt="Weather"
-            width={64}
-            height={64}
-            priority
-          />
-        </div>
+        )}
       </div>
     </PixelBorder>
   );
