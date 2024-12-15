@@ -16,7 +16,7 @@ export function EmailNotification() {
   return (
     <div className="fixed bottom-4 right-4 bg-blue-100 border-2 border-blue-400 p-4 rounded-lg shadow-lg z-50">
       <div className="flex items-center">
-        <Image src="/mail-icon.gif" alt="You've Got Mail" width={32} height={32} className="mr-2" />
+        <Image src="/mail.gif" alt="You've Got Mail" width={32} height={32} className="mr-2" />
         <div>
           <h3 className="font-bold">You Have Got Mail!</h3>
           <p className="text-sm">Click here to check your inbox</p>
